@@ -23,5 +23,5 @@ require (
 	gocloud.dev v0.34.0
 	golang.org/x/sync v0.4.0
 	gotest.tools/v3 v3.3.0 // indirect
-	sigs.k8s.io/yaml v1.3.0
+	sigs.k8s.io/yaml v1.4.0
 )
