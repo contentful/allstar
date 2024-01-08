@@ -4,11 +4,11 @@ go 1.16
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/bradleyfalzon/ghinstallation/v2 v2.4.0
+	github.com/bradleyfalzon/ghinstallation/v2 v2.9.0
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/evanphx/json-patch v5.6.0+incompatible
 	github.com/gobwas/glob v0.2.3
-	github.com/google/go-cmp v0.5.9
+	github.com/google/go-cmp v0.6.0
 	github.com/google/go-containerregistry v0.15.2 // indirect
 	github.com/google/go-github/v50 v50.2.0
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79
