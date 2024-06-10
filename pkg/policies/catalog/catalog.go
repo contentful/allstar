@@ -19,11 +19,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/contentful/allstar/pkg/config"
-	"github.com/contentful/allstar/pkg/policydef"
+	"github.com/ossf/allstar/pkg/config"
+	"github.com/ossf/allstar/pkg/policydef"
 	"github.com/shurcooL/githubv4"
 
-	"github.com/google/go-github/v50/github"
+	"github.com/google/go-github/v59/github"
 	"github.com/rs/zerolog/log"
 )
 
@@ -72,7 +72,7 @@ type mergedConfig struct {
 }
 
 type details struct {
-	Enabled      bool
+	Enabled bool
 }
 
 var configFetchConfig func(context.Context, *github.Client, string, string, string, config.ConfigLevel, interface{}) error

@@ -24,12 +24,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/contentful/allstar/pkg/config"
-	"github.com/contentful/allstar/pkg/config/operator"
-	"github.com/contentful/allstar/pkg/config/schedule"
+	"github.com/ossf/allstar/pkg/config"
+	"github.com/ossf/allstar/pkg/config/operator"
+	"github.com/ossf/allstar/pkg/config/schedule"
 	"github.com/rs/zerolog/log"
 
-	"github.com/google/go-github/v50/github"
+	"github.com/google/go-github/v59/github"
 )
 
 const issueRepoTitle = "Security Policy violation for repository %q %v"
@@ -139,7 +139,7 @@ func ensure(ctx context.Context, c *github.Client, issues issues, owner, repo, p
 	if !strings.Contains(issue.GetBody(), hash) && hasIssueSection(issue.GetBody(), updateSectionName) {
 		// Comment update and update issue body
 		commentBody := fmt.Sprintf("The policy result has been updated.\n\n---\n\n%s", text)
-		comment, _, err := issues.CreateComment(ctx, owner, repo, issue.GetNumber(), &github.IssueComment{
+		comment, _, err := issues.CreateComment(ctx, owner, issueRepo, issue.GetNumber(), &github.IssueComment{
 			Body: &commentBody,
 		})
 		if err != nil {
@@ -159,7 +159,7 @@ func ensure(ctx context.Context, c *github.Client, issues issues, owner, repo, p
 		}
 		// Ensure issue is open as well
 		state := "open"
-		_, _, err = issues.Edit(ctx, owner, repo, issue.GetNumber(), &github.IssueRequest{
+		_, _, err = issues.Edit(ctx, owner, issueRepo, issue.GetNumber(), &github.IssueRequest{
 			State: &state,
 			Body:  &newBody,
 		})
@@ -287,7 +287,7 @@ func createIssueBody(owner, repo, text, hash, footer string, isIssueRepo bool) s
 		refersTo = fmt.Sprintf(" and refers to [%s](https://github.com/%s)", ownerRepo, ownerRepo)
 	}
 	editHeader := issueSectionHeader(updateSectionName)
-	return fmt.Sprintf("_This issue was automatically created by [Allstar](https://github.com/contentful/allstar/)%s._\n\n**Security Policy Violation**\n"+
+	return fmt.Sprintf("_This issue was automatically created by [Allstar](https://github.com/ossf/allstar/)%s._\n\n**Security Policy Violation**\n"+
 		"%v\n\n---\n\n%s%s%s\n%v",
 		refersTo, text, editHeader, fmt.Sprintf(resultTextHashCommentFormat, hash), editHeader, footer)
 }

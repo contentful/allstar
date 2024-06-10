@@ -18,7 +18,7 @@
 // Policies should define and retrieve their own config in the same way that
 // Allstar does. There should be an org-level config and repo-level
 // config. Each config should include the OptConfig defined in
-// github.com/contentful/allstar/pkg/config to determine if the policy is enabled or
+// github.com/ossf/allstar/pkg/config to determine if the policy is enabled or
 // disabled. The config package also provided helper functions to retrieve
 // config from the repo.
 package policydef
@@ -26,7 +26,7 @@ package policydef
 import (
 	"context"
 
-	"github.com/google/go-github/v50/github"
+	"github.com/google/go-github/v59/github"
 )
 
 // Result is returned from a policy check.
