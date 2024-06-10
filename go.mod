@@ -1,6 +1,6 @@
 module github.com/ossf/allstar
 
-go 1.24
+go 1.21.8
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
